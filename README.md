@@ -248,10 +248,66 @@ Usemos la etiquetas para añadir la navegación a *_layouts/default.html*:
 ```
 Ahora deberíamos de ir  *http://localhost:4000* y poder navegar entre las páginas.
 
+<img  src = "/img/navigation.png" alt ="Navigation page" />
+
 **CURRENT PAGE HIGHLIGHTING**
 
+Vamos resaltemos la página actual en la navegación.
+
+**includes/navigation.html** necesita saber la URL de la página en la que está insertada para poder agregar estilo. Jekyll tiene variables útiles disponibles y una de ellas es **page.url**.
+
+Utilizando **page.url** puede verificar si cada enlace es la página actual y colorearlo de rojo si es verdadero:
+
+```html
+<nav>
+  <a href="/" {% if page.url == "/" %}style="color: red;"{% endif %}>
+    Home
+  </a>
+  <a href="/about.html" {% if page.url == "/about.html" %}style="color: red;"{% endif %}>
+    About
+  </a>
+</nav>
+```
+
+<img  src = "/img/highlighting.png" alt ="Page highlighting" />
+
+Ahora podremos navegar entre las páginas que hemos creado y ver como se marca en rojo la pagina actual que estamos viendo.
+
+
 ##### Data Files <a name="id1.1.6"></a>
+
+**Jekyll** admite la carga de datos de archivos *YAML*, *JSON* y *CSV* ubicados en un directorio **_data** .
+
+Los archivos de datos son una excelente manera de separar el contenido del código fuente para hacer que el sitio sea más fácil de mantener.
+
+En este paso almacenaremos el contenido de la navegación en un archivo de datos y luego iterará sobre él.
+
+**DATA FILE USAGE**
+
+**YAML** es un formato común en Ruby y en esta ocasión lo usaremos para almacenar una variedad de elementos de navegación, cada uno con un *nombre* y un *enlace*.
+
+Para hacerlo crearemos un archivo de datos para la navegación en *_data/navigation.yml* con lo siguiente:
+
+- name: Home
+  link: /
+- name: About
+  link: /about.html
+
+Jekyll pone a su disposición este archivo de datos en *site.data.navigation*. En lugar de mostrar cada enlace, ahora podemos iterar sobre el archivo de datos *_includes/navigation.html*:
+
+```html
+<nav>
+  {% for item in site.data.navigation %}
+    <a href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+      {{ item.name }}
+    </a>
+  {% endfor %}
+</nav>
+```
+
 ##### Assets <a name="id1.1.7"></a>
+
+
 ##### Blogging <a name="id1.1.8"></a>
 ##### Collections <a name="id1.1.9"></a>
 
