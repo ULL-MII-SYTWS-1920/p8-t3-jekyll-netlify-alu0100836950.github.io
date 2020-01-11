@@ -194,6 +194,24 @@ title: Home
 <h1>{{ "Hello World!" | downcase }}</h1>
 ```
 
+**ABOUT PAGE**
+
+Crearemos en el direcotrio raiz de nuestro proyecto el fichero *about.md* con el mismo diseño que *index.html*:
+
+```
+---
+layout: default
+title: About
+---
+# About page
+
+This page tells you a little bit about me.
+```
+
+Hemos creado otra pagina asi que ahora podremos abrir nuestro navegador e introducir *http: //localhost: 4000/about.html*. 
+
+<img  src = "/img/about.png" alt ="Page about" />
+
 ##### Includes <a name="id1.1.5"></a>
 ##### Data Files <a name="id1.1.6"></a>
 ##### Assets <a name="id1.1.7"></a>
