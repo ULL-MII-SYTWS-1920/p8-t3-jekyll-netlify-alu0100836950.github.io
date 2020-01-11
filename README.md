@@ -307,6 +307,61 @@ Jekyll pone a su disposición este archivo de datos en *site.data.navigation*. E
 
 ##### Assets <a name="id1.1.7"></a>
 
+Usar CSS, JS, imágenes y otros activos es sencillo con Jekyll, normalmente se usa esta estructura para mantener los activos organizados:
+
+<img  src = "/img/struct_assets.png" alt ="Estructura de assets" />
+
+**SASS**
+
+Los estilos en línea utilizados en *_includes/navigation.html* no son una práctica recomendada, en vez de eso diseñaremos la página actual con una clase.
+
+```html
+<nav>
+  {% for item in site.data.navigation %}
+    <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
+  {% endfor %}
+</nav>
+```
+
+Para diseñar la página vamos a usar **Sass**, una extensión(preprocesador) para CSS.
+
+Primero vamo a crear un archivo Sass en */assets/css/styles.scss* con el siguiente contenido:
+
+```
+---
+---
+@import "main";
+```
+
+El **front matter** vacío en la parte superior le dice a Jekyll que necesita procesar el archivo. El `@import "main"` le dice a **Sass** que busque un archivo llamado *main.scss* en el directorio sass, (*_sass/* por defecto).
+
+Crearemos un archivo Sass -> */_sass/main.scss* con el siguiente contenido:
+
+```css
+.current {
+  color: green;
+}
+```
+Una vez tengamos nuestra hoja de estilo tendremos que indicar que queremos usarla en nuestro sitio web:
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+  </head>
+  <body>
+    {% include navigation.html %}
+    {{ content }}
+  </body>
+</html>
+```
+
+Como podemos ver en la siguiente imagen ahora el texto aparece en verde ya que estamos utilizando la hoja de estilo nueva que hemos creado.
+
+<img  src = "/img/style.png" alt ="Site web green words" />
 
 ##### Blogging <a name="id1.1.8"></a>
 ##### Collections <a name="id1.1.9"></a>
