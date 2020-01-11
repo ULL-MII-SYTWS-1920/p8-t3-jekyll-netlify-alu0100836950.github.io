@@ -213,6 +213,43 @@ Hemos creado otra pagina asi que ahora podremos abrir nuestro navegador e introd
 <img  src = "/img/about.png" alt ="Page about" />
 
 ##### Includes <a name="id1.1.5"></a>
+
+Estamos formando el sitio con varias paginas, sin embargo, no hay forma de navegar entre páginas. 
+
+**INCLUDE TAG**
+
+La etiqueta *include* nos permite incluir contenido de otro archivo almacenado en una carpeta *_includes*. 
+
+**INCLUDE USAGE**
+
+Cree un archivo para la navegación en *_includes/navigation.html* con el siguiente contenido:
+
+```html
+<nav>
+  <a href="/">Home</a>
+  <a href="/about.html">About</a>
+</nav>
+```
+
+Usemos la etiquetas para añadir la navegación a *_layouts/default.html*:
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    {% include navigation.html %}
+    {{ content }}
+  </body>
+</html>
+```
+Ahora deberíamos de ir  *http://localhost:4000* y poder navegar entre las páginas.
+
+**CURRENT PAGE HIGHLIGHTING**
+
 ##### Data Files <a name="id1.1.6"></a>
 ##### Assets <a name="id1.1.7"></a>
 ##### Blogging <a name="id1.1.8"></a>
