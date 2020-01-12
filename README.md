@@ -564,6 +564,51 @@ Ahora necesitamos una manera de navegar a esta página a través de la navegaci�
 
 ***OUTPUT A PAGE**
 
+Las colecciones no generan una página para documentos por defecto y nosotros queremos que cada autor tenga su propia página, así que tenemos que modificar la configuración de la colección.
+
+Para ello añadiremos a **_config.yml** `output: true` a la configuración de la colección de autores. El archivo quedaría de la siguiente forma:
+
+```YML
+collections:
+  authors:
+    output: true
+```
+
+*Podemos vinvular la página utilizando author.url*
+
+Añadiremos el enlace a la página staff.html
+
+```HTML
+---
+layout: default
+title: Staff
+---
+<h1>Staff</h1>
+
+<ul>
+  {% for author in site.authors %}
+    <li>
+      <h2><a href="{{ author.url }}">{{ author.name }}</a></h2>
+      <h3>{{ author.position }}</h3>
+      <p>{{ author.content | markdownify }}</p>
+    </li>
+  {% endfor %}
+</ul>
+```
+
+Una vez que tenemos los enlaces a cada autor tenemos que hacer un diseño para los autores en *_layouts/author.html*:
+
+```html
+---
+layout: default
+---
+<h1>{{ page.name }}</h1>
+<h2>{{ page.position }}</h2>
+
+{{ content }}
+```
+
+
 **FRONT MATTER DEFAULTS**
 **LIST AUTHOR'S POSTS**
 **LINK TO AUTHORS PAGE**
