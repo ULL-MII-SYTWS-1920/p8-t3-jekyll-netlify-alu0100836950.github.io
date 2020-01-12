@@ -663,6 +663,24 @@ layout: default
 
 **LINK TO AUTHORS PAGE**
 
+Las publicaciones tienen una referencia al autor, así que vamos a vincularlo a la página del autor. Lo haremos utilizando una técnica de filtrado en *_layouts/post.html*:
+
+```HTML
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+
+<p>
+  {{ page.date | date_to_string }}
+  {% assign author = site.authors | where: 'short_name', page.author | first %}
+  {% if author %}
+    - <a href="{{ author.url }}">{{ author.name }}</a>
+  {% endif %}
+</p>
+
+{{ content }}
+```
 
 
 
