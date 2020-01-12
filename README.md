@@ -634,10 +634,33 @@ defaults:
       layout: "default"
 ```
 
-Ahora podemos eliminar el layout del *front matter* de todas las páginas y publicaciones, posteriormente reiniciamos el server.
+Ahora podemos eliminar el *layout* del *front matter* de todas las páginas y publicaciones, posteriormente reiniciamos el server.
 
 
 **LIST AUTHOR'S POSTS**
+
+Hagamos una lista de las publicaciones que un autor ha publicado en su página. Tenemos que hacer coincidir el **short_name** con  **author**. 
+
+Iteraramos sobre *_layouts/author.html* para mostrar las publicaciones del autor:
+
+```HTML
+---
+layout: default
+---
+<h1>{{ page.name }}</h1>
+<h2>{{ page.position }}</h2>
+
+{{ content }}
+
+<h2>Posts</h2>
+<ul>
+  {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
+  {% for post in filtered_posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+```
+
 **LINK TO AUTHORS PAGE**
 
 
