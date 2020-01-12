@@ -269,7 +269,7 @@ Utilizando **page.url** puede verificar si cada enlace es la página actual y co
 </nav>
 ```
 
-<img  src = "/img/highlighting.png" alt ="Page highlighting" />
+<img  src = "/img/page_highlighting.png" alt ="Page highlighting" />
 
 Ahora podremos navegar entre las páginas que hemos creado y ver como se marca en rojo la pagina actual que estamos viendo.
 
@@ -364,6 +364,128 @@ Como podemos ver en la siguiente imagen ahora el texto aparece en verde ya que e
 <img  src = "/img/style.png" alt ="Site web green words" />
 
 ##### Blogging <a name="id1.1.8"></a>
+
+**POSTS**
+
+Las publicaciones de blog se almacenan en una carpeta llamada **_posts**. El nombre de archivo para las publicaciones tiene un formato especial: 
+
+1. Fecha de publicación 
+2. Un título
+3. Una extensión
+
+Crearemos nuestra primera publicación en *_posts/2018-08-20-bananas.md* con el siguiente contenido:
+
+```
+---
+layout: post
+author: jill
+---
+A banana is an edible fruit – botanically a berry – produced by several kinds
+of large herbaceous flowering plants in the genus Musa.
+
+In some countries, bananas used for cooking may be called "plantains",
+distinguishing them from dessert bananas. The fruit is variable in size, color,
+and firmness, but is usually elongated and curved, with soft flesh rich in
+starch covered with a rind, which may be green, yellow, red, purple, or brown
+when ripe.
+```
+Si nos fijamos el layout "post" no existe asi que debemos crearno en el directorio **_layouts** con el nombre de *post.html* y el siguiente contenido:
+
+```html
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p>{{ page.date | date_to_string }} - {{ page.author }}</p>
+
+{{ content }}
+```
+Este codigo es un claro ejemplo de herencia de diseño. 
+El diseño de la publicación muestra el título, la fecha, el autor y el cuerpo del contenido que se ajusta con el diseño predeterminado.
+
+También podemos fijarnos en el filtro **date_to_string**, que formatea una fecha en un formato más visible.
+
+**LIST POSTS**
+
+Aun no podemos navegar a la publicación del blog. Por lo general, un blog tiene una página que enumera todas las publicaciones.
+
+Jekyll tiene las publicaciones disponibles en *site.posts*.
+
+Por tanto crearemos **blog.html** en la raíz de nuestro proyecto con el siguiente contenido para poder tener acceso a los posts:
+
+```html
+---
+layout: default
+title: Blog
+---
+<h1>Latest Posts</h1>
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.excerpt }}</p>
+    </li>
+  {% endfor %}
+</ul>
+```
+
+Cosas a tener en cuenta en el anterior código:
+
+- post.url -> Jekyll establece automáticamente la ruta de salida de la publicación
+- post.title -> Se extrae del nombre de archivo de la publicación
+- post.excerpt -> Es el primer párrafo de contenido por defecto
+
+Sin embargo, aun nos falta una forma de poder navegar a traves de la barra de navegacion, asi que añadiremos lo siguiente en nuestro archivo *_data/navigation.yml*:
+
+```YML
+- name: Blog
+  link: /blog.html
+```
+
+
+**MORE POSTS**
+
+Por ahora solo tenemos un post creado. Para enriquecer nuestro sitio vamos a crear algunos mas.
+
+*2018-08-21-apples.md*
+
+```
+---
+layout: post
+author: jill
+---
+An apple is a sweet, edible fruit produced by an apple tree.
+
+Apple trees are cultivated worldwide, and are the most widely grown species in
+the genus Malus. The tree originated in Central Asia, where its wild ancestor,
+Malus sieversii, is still found today. Apples have been grown for thousands of
+years in Asia and Europe, and were brought to North America by European
+colonists.
+```
+
+
+*2018-08-22-kiwifruit.md*
+
+```
+---
+layout: post
+author: ted
+---
+Kiwifruit (often abbreviated as kiwi), or Chinese gooseberry is the edible
+berry of several species of woody vines in the genus Actinidia.
+
+The most common cultivar group of kiwifruit is oval, about the size of a large
+hen's egg (5–8 cm (2.0–3.1 in) in length and 4.5–5.5 cm (1.8–2.2 in) in
+diameter). It has a fibrous, dull greenish-brown skin and bright green or
+golden flesh with rows of tiny, black, edible seeds. The fruit has a soft
+texture, with a sweet and unique flavor.
+```
+
+Ahora podemos ir a nuestra ruta *localhost:4000/blog.html* y ver nuestros enlaces a los **posts** que hemos creado:
+
+<img  src = "/img/blog.png" alt ="Blog" />
+
 ##### Collections <a name="id1.1.9"></a>
 
 
