@@ -488,6 +488,85 @@ Ahora podemos ir a nuestra ruta *localhost:4000/blog.html* y ver nuestros enlace
 
 ##### Collections <a name="id1.1.9"></a>
 
+En esta sección haremos que cada autor tenga su propia página con una propaganda y las publicaciones que han publicado. Para ello usaremos las **colecciones**, contenido similiar a una publicacion pero sin tener que estar agrupadas por fecha.
+
+
+**CONFIGURATION**
+
+Para configurar una colección tenemso que decirselo a **Jekyll** y esto se hace un archivo llamado *_config.yml*(por defecto).
+
+Crearemos *_config.yml* en la raíz del proyecto con lo siguiente:
+
+```
+collections:
+  authors:
+```
+
+*Es necesario reiniciar el servidor jekyll.*
+
+**ADD AUTHORS**
+
+Los elementos de una colección estan en una carpeta en la raíz del proyecto de la forma -> *_collection_name*, en nuestro caso se llamará **_authors**.
+
+Crearemos un documento para cada autor:
+
+*_authors/jill.md:*
+```
+---
+short_name: jill
+name: Jill Smith
+position: Chief Editor
+---
+Jill is an avid fruit grower based in the south of France.
+```
+
+*_authors/ted.md*
+```
+---
+short_name: ted
+name: Ted Doe
+position: Writer
+---
+Ted has been eating fruit since he was baby.
+```
+
+**STAFF PAGE**
+
+
+Ahora añadiremos una página que enumera todos los autores en el sitio web. Jekyll permite acceder a la colección en **site.authors**.
+
+Crearemos **staff.html** e iteraremos *site.authors* para generar todos los autores:
+
+```html
+---
+layout: default
+title: Staff
+---
+<h1>Staff</h1>
+
+<ul>
+  {% for author in site.authors %}
+    <li>
+      <h2>{{ author.name }}</h2>
+      <h3>{{ author.position }}</h3>
+      <p>{{ author.content | markdownify }}</p>
+    </li>
+  {% endfor %}
+</ul>
+```
+
+Ahora necesitamos una manera de navegar a esta página a través de la navegación principal.Por ello, añadiremos a nuestro fichero *_data/navigation.yml* lo siguiente:
+
+```YML
+- name: Staff
+  link: /staff.html
+```
+
+***OUTPUT A PAGE**
+
+**FRONT MATTER DEFAULTS**
+**LIST AUTHOR'S POSTS**
+**LINK TO AUTHORS PAGE**
 
 
 
