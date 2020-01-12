@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 collections:
   authors:
     output: true
@@ -22,3 +23,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+=======
+theme: jekyll-theme-time-machine
+>>>>>>> 7ad9220dc5a17a5bbb04db2e916199c46c132d79
