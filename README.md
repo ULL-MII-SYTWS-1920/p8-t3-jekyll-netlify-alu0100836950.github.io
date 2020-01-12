@@ -608,8 +608,35 @@ layout: default
 {{ content }}
 ```
 
-
 **FRONT MATTER DEFAULTS**
+
+Ahora falta configurar los documentos de autor para usar el diseño *author*. Lo que realmente desea es que todas las publicaciones tengan automáticamente el diseño de la publicación.
+
+Puede lograr estoutilizaremos los valores predeterminados del front matter  para añadirlos en *_config.yml*. Estableceremos un ámbito de aplicación a lo que se aplica el valor predeterminadoy posteriormente el asunto que se quiere añadir.
+
+Lo hacemos de la siguiente forma:
+
+```YML
+defaults:
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+```
+
+Ahora podemos eliminar el layout del *front matter* de todas las páginas y publicaciones, posteriormente reiniciamos el server.
+
+
 **LIST AUTHOR'S POSTS**
 **LINK TO AUTHORS PAGE**
 
