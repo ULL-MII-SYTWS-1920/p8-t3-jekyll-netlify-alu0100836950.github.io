@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 collections:
   authors:
     output: true
@@ -24,8 +22,3 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-
-
-=======
-theme: jekyll-theme-leap-day
->>>>>>> 018033a08d61795e765c28152001016ca355d32e
