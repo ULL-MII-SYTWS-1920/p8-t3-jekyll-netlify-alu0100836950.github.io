@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 collections:
   authors:
@@ -25,3 +26,6 @@ plugins:
   - jekyll-seo-tag
 
 
+=======
+theme: jekyll-theme-leap-day
+>>>>>>> 018033a08d61795e765c28152001016ca355d32e
