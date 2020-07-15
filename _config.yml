@@ -23,4 +23,4 @@ plugins_dir:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-theme: jekyll-theme-cayman
+theme: jekyll-theme-slate
