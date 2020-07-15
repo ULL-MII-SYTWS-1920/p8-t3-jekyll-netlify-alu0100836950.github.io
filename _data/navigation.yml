@@ -1,8 +1,16 @@
+# - name: Home
+#   link: /p8-t3-jekyll-netlify-alu0100836950.github.io/
+# - name: About
+#   link: /p8-t3-jekyll-netlify-alu0100836950.github.io/about.html
+# - name: Blog
+#   link: /p8-t3-jekyll-netlify-alu0100836950.github.io/blog.html
+# - name: staff
+#   link: /p8-t3-jekyll-netlify-alu0100836950.github.io/staff.html
 - name: Home
-  link: /p8-t3-jekyll-netlify-alu0100836950.github.io/
+  link: /
 - name: About
-  link: /p8-t3-jekyll-netlify-alu0100836950.github.io/about.html
+  link: /about.html
 - name: Blog
-  link: /p8-t3-jekyll-netlify-alu0100836950.github.io/blog.html
+  link: /blog.html
 - name: staff
-  link: /p8-t3-jekyll-netlify-alu0100836950.github.io/staff.html
+  link: /staff.html

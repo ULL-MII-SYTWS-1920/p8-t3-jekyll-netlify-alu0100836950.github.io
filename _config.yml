@@ -4,7 +4,7 @@ collections:
 
 defaults:
   - scope:
-      path: "p8-t3-jekyll-netlify-alu0100836950.github.io"
+      path: ""
       type: "authors"
     values:
       layout: "author"
@@ -18,7 +18,7 @@ defaults:
     values:
       layout: "default"
 
-plugins:
+plugins_dir:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
