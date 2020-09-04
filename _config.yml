@@ -26,3 +26,5 @@ plugins:
 #theme: architect
 
 #baseurl: p8-t3-jekyll-netlify-alu0100836950.github.io/
+
+theme: jekyll-theme-time-machine
